@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	  <title>Basuritter</title>
+	  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	  <meta name="robots" content="noindex, nofollow">
+	  <meta name="googlebot" content="noindex, nofollow">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	  <script type="text/javascript" src="//code.jquery.com/jquery-compat-git.js"></script>
+	  
+	  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery-ui.css">
+
+	  <script type="text/javascript" src="http://rvera.github.io/image-picker/image-picker/image-picker.min.js"></script>
+	  <script type="text/javascript" src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js"></script>
+	  <script type="text/javascript" src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+	  <link rel="stylesheet" type="text/css" href="http://rvera.github.io/image-picker/image-picker/image-picker.css">
+	  <link rel="stylesheet" type="text/css" href="http://bgrins.github.com/spectrum/spectrum.css">
+	  <script type="text/javascript" src="http://bgrins.github.com/spectrum/spectrum.js"></script>
+	  
+	  <link rel="stylesheet" type="text/css" href="style.css">
+	  
+	  <script type="text/javascript" src="basuritter.js"></script>
+
+	</head>
+	
+	<body>
+
+		<div id='container'>
+			<h1>
+			Basuritter 2.0
+			</h1>
+			<div id='config'>
+			  <span>Engine</span>
+			  <select id='engine' title="image search engine">
+				<option value='google' selected>google</option>
+				<option value='bing'>bing</option>
+				<option value='pixabay'>pixabay</option>
+			  </select>
+			  <span class='language'>-</span>
+			  <select id='language' class='language'>
+				<option value='es' selected>español</option>
+				<option value='en'>inglés</option>
+			  </select>
+			  <span class='quantity'>-</span>
+			  <select id='quantity' class='quantity'>
+				<option value='5'>5</option>
+				<option value='10' selected>10</option>
+				<option value='20'>20</option>
+				<option value='50'>50</option>
+				<option value='100'>100</option>
+			  </select>
+			  <span>- by thepirat000 -</span>
+			  <span><a id='album' href='#' target='_blank'>album</a></span>
+			</div>
+
+			<hr />
+			<div><span>Search terms:</span>
+			</div>
+			<div id='inputs'>
+			</div>
+			<input type='button' value='+' id='addTerm' />
+
+			<div>
+			  <br />
+			  <input id='dale' type='button' value='Go' style='width: 200px;'/>
+			</div>
+
+			<div id='main' style='display:none;'>
+			</div>
+
+			<br/>
+			<div>
+			  <span>Type:</span>
+			  <select id='type' title="output layout">
+				<option value='h' selected>horizontal</option>
+				<option value='v'>vertical</option>
+			  </select>
+			  <span>-</span>
+			  <span>Size:</span>
+			  <select id='size' title="output size">
+				<option value='64'>64px</option>
+				<option value='100'>100px</option>
+				<option value='120'>120px</option>
+				<option value='140'>140px</option>
+				<option value='160' selected>160px</option>
+				<option value='180' >180px</option>
+				<option value='200'>200px</option>
+				<option value='220'>220px</option>
+				<option value='240'>240px</option>
+				<option value='320'>320px</option>
+				<option value='480'>480px</option>
+			  </select>
+			  <span>-</span>
+			  <span>As:</span>
+			  <select id='as' title="render type">
+				<option value='auto' selected>Auto</option>
+				<option value='multi'>Multi</option>
+				<option value='single'>Single</option>
+			  </select>
+			</div>
+			<br/>
+		</div>
+
+		<p id='errMsg' style="color: red;"></p>
+
+		<div id="result">
+		</div>
+
+
+		<div id='divCanvas' style="display:none;">
+		  <p class='text'>Single:</p>
+		  <div id='canvas-container'>
+		  </div>
+		  <div id='draw' style='display:none;'>
+			<input type='text' id="color-picker"/>
+			<select id='thick' title="line width">
+			  <option value='1' selected>1px</option>
+			  <option value='2'>2px</option>
+			  <option value='3'>3px</option>
+			  <option value='4'>4px</option>
+			  <option value='5'>5px</option>
+			  <option value='10'>10px</option>
+			</select>
+		  </div>
+		  
+		  <div>
+			<input type='button' id='edit' class='text' value='edit' title='edit image'/>
+			<input type='button' id='download' class='text' value='download' title='download image'/>
+			<input type='button' id='save' class='text' value='save' title='save to album' />
+		  </div> 
+		</div>
+
+
+		<div>
+		  <br/>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/>
+		</div>
+
+	
+	
+	</body>
+</html>
