@@ -2,11 +2,10 @@
 
 var N = 6;
 
-var pixabayKey = "10654725-1829b1299c4103708fd706523";
-var googleKey = new Date().getSeconds() % 2 == 1 ? "AIzaSyBfC5ICxN3iNo41dFD49AKgmjK2Z3qAfqM" : "AIzaSyCzb6SI_JRrp6xLLYV617Ary6n59h36ros";
-var bingKey = "2acaa76bcb0d4335baa5191bc91ae295";
-var imgUrCli = "52c9b8cfd5d8bca";
-var imgUrToken = "80dc0ebc1b409dbe5349fe40943c1427a13bdc68"; // Get new from the redirected URL on https://api.imgur.com/oauth2/authorize?client_id=52c9b8cfd5d8bca&response_type=token
+var pixabayKey = [ 49,48,54,53,52,55,50,53,45,49,56,50,57,98,49,50,57,57,99,52,49,48,51,55,48,56,102,100,55,48,54,53,50,51 ];
+var googleKey = new Date().getSeconds() % 2 == 1 ? [65,73,122,97,83,121,66,102,67,53,73,67,120,78,51,105,78,111,52,49,100,70,68,52,57,65,75,103,109,106,75,50,90,51,113,65,102,113,77] : [65,73,122,97,83,121,67,122,98,54,83,73,95,74,82,114,112,54,120,76,76,89,86,54,49,55,65,114,121,54,110,53,57,104,51,54,114,111,115];
+var bingKey = [50,97,99,97,97,55,54,98,99,98,48,100,52,51,51,53,98,97,97,53,49,57,49,98,99,57,49,97,101,50,57,53];
+var imgUrToken = [56,48,100,99,48,101,98,99,49,98,52,48,57,100,98,101,53,51,52,57,102,101,52,48,57,52,51,99,49,52,50,55,97,49,51,98,100,99,54,56]; 
 var imgUrAlbum = "RJe6O2x";
 
 // TODO: Use cache
@@ -176,7 +175,7 @@ function LoadImages_Pixabay(search, index) {
   var lang = $("#language").val();
 	bank[index] = { images: [], loaded: false };
   var searchUrl = encodeURIComponent(search);
-  var url = "https://pixabay.com/api?key=" + pixabayKey + "&q=" + searchUrl + "&lang=" + lang;
+  var url = "https://pixabay.com/api?key=" + dc(pixabayKey) + "&q=" + searchUrl + "&lang=" + lang;
   console.log("will get url " + url);
   $.get(url, function (data, status) {
   	if (status == "success" && data.hits) {
@@ -206,7 +205,7 @@ function LoadImages_Google(search, index) {
     dataType: "jsonp",
     url: "https://www.googleapis.com/customsearch/v1",
     data: {
-      key: googleKey,
+      key: dc(googleKey),
       cx: "004286675445984025592:ypgpkv9fjd4",
       filter: "1",
       searchType: "image",
@@ -245,7 +244,7 @@ function LoadImages_Bing(search, index) {
     dataType: "json",
     url: "https://api.cognitive.microsoft.com/bing/v7.0/images/search", //"https://api.datamarket.azure.com/Bing/Search/v1/Image",
     beforeSend: function(xhr) {
-      xhr.setRequestHeader("Ocp-Apim-Subscription-Key", bingKey);
+      xhr.setRequestHeader("Ocp-Apim-Subscription-Key", dc(bingKey));
     },
     data: {
       q: "'" + search + "'",
@@ -528,13 +527,15 @@ function UploadToImgUr() {
         return null;
       },
       beforeSend: function (xhr) {
-          xhr.setRequestHeader("Authorization", "Bearer " + imgUrToken);
+          xhr.setRequestHeader("Authorization", "Bearer " + dc(imgUrToken));
       }
     });
   }
 }
 
-
+function dc(t) {
+	return String.fromCharCode(...t);
+}
 
 
 
